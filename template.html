@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOKI-刻 | Official Site</title>
+<meta name="description" content="TOKI-刻 オフィシャルサイト。声と音だけを残して。これはそれまでのTOKIを刻む人間のクロニクル。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;700&family=Cormorant+Garamond:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-black:#0b0a08;      /* 背景:墨の黒 */
+    --char:#161310;           /* 少し明るい黒 */
+    --gold:#c8a878;           /* アイコンの縁の金 */
+    --gold-dim:#8a744f;       /* 沈んだ金 */
+    --smoke:#9a9184;          /* 煙のグレー */
+    --ivory:#e9e2d3;          /* 本文の生成り */
+    --font-min:'Shippori Mincho B1',serif;
+    --font-lat:'Cormorant Garamond',serif;
+    --font-ui:'Zen Kaku Gothic New',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink-black);
+    color:var(--ivory);
+    font-family:var(--font-min);
+    line-height:2;
+    letter-spacing:.06em;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ::selection{background:var(--gold-dim);color:var(--ink-black)}
+
+  /* ───── ナビ ───── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:10;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.1rem 1.6rem;
+    background:linear-gradient(to bottom,rgba(11,10,8,.92),rgba(11,10,8,0));
+  }
+  .nav-name{font-family:var(--font-lat);font-size:1.05rem;letter-spacing:.35em;color:var(--gold)}
+  .nav-links{display:flex;gap:1.4rem;font-family:var(--font-ui);font-size:.72rem;letter-spacing:.2em}
+  .nav-links a{color:var(--smoke);transition:color .3s}
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--gold)}
+  a:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+
+  /* ───── ヒーロー ───── */
+  .hero{
+    min-height:100svh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;overflow:hidden;
+    padding:6rem 1.5rem 4rem;
+  }
+  .hero::before{ /* ゆっくり漂う煙 */
+    content:"";position:absolute;inset:-20%;
+    background:
+      radial-gradient(ellipse 40% 30% at 30% 60%,rgba(200,168,120,.07),transparent 70%),
+      radial-gradient(ellipse 35% 45% at 70% 30%,rgba(154,145,132,.05),transparent 70%);
+    animation:drift 24s ease-in-out infinite alternate;
+    pointer-events:none;
+  }
+  @keyframes drift{
+    from{transform:translate(-2%,1%) scale(1)}
+    to{transform:translate(2%,-2%) scale(1.06)}
+  }
+  .hero-icon{
+    width:min(320px,68vw);border-radius:50%;
+    box-shadow:0 0 80px rgba(200,168,120,.14);
+    animation:fadeup 1.6s ease both;
+  }
+  .hero-name{
+    margin-top:2.2rem;
+    font-family:var(--font-lat);
+    font-size:clamp(2.2rem,6vw,3.4rem);
+    font-weight:400;letter-spacing:.45em;text-indent:.45em;
+    color:var(--ivory);
+    animation:fadeup 1.6s .3s ease both;
+  }
+  .hero-name .koku{font-family:var(--font-min);font-weight:500;color:var(--gold)}
+  .hero-tag{
+    margin-top:1.8rem;
+    font-size:.95rem;letter-spacing:.4em;text-indent:.4em;color:var(--smoke);
+    animation:fadeup 1.6s .6s ease both;
+  }
+  @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .hero-scroll{
+    position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+    font-family:var(--font-ui);font-size:.62rem;letter-spacing:.4em;color:var(--gold-dim);
+  }
+
+  /* ───── セクション共通 ───── */
+  section{padding:7rem 1.5rem;position:relative}
+  .sec-label{
+    display:flex;flex-direction:column;align-items:center;gap:1.1rem;
+    margin-bottom:4rem;text-align:center;
+  }
+  .sec-label .en{
+    font-family:var(--font-lat);font-size:1.15rem;letter-spacing:.55em;text-indent:.55em;
+    color:var(--gold);text-transform:uppercase;
+  }
+  .sec-label::after{
+    content:"";width:2.5rem;height:1px;background:var(--gold-dim);
+  }
+  .hr-gold{width:2.5rem;height:1px;background:var(--gold-dim);margin:0 auto}
+
+  /* ───── ① コンセプト(縦書き) ───── */
+  .concept{background:var(--char)}
+  .concept-body{
+    max-width:560px;
+    margin:0 auto;
+    text-align:center;
+    font-size:clamp(.95rem,2.6vw,1.15rem);
+    line-height:2.8;letter-spacing:.22em;
+  }
+  .concept-body p{margin-bottom:1.8em}
+  .concept-body p:last-child{margin-bottom:0}
+  .concept-body .em{color:var(--gold)}
+
+  /* ───── ② 作品一覧 ───── */
+  .works-grid{
+    max-width:960px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:2.2rem;
+  }
+  .work{
+    display:block;transition:transform .35s ease;
+  }
+  .work:hover{transform:translateY(-4px)}
+  .jacket{
+    position:relative;aspect-ratio:1/1;overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 40%,#1d1913,var(--ink-black) 75%);
+    border:1px solid rgba(200,168,120,.35);
+  }
+  .jacket img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .jacket .ph{ /* 画像が無い時のプレースホルダー */
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;gap:.6rem;
+  }
+  .jacket .ph .mark{
+    font-family:var(--font-lat);font-size:.85rem;letter-spacing:.4em;text-indent:.4em;
+    color:var(--gold);
+    border:1px solid var(--gold-dim);border-radius:50%;
+    width:4.6rem;height:4.6rem;display:flex;align-items:center;justify-content:center;
+  }
+  .jacket .ph .t{font-size:.85rem;color:var(--smoke);letter-spacing:.15em;text-align:center;padding:0 1rem}
+  .work-info{margin-top:1rem;text-align:center}
+  .work-title{font-size:1rem;letter-spacing:.12em}
+  .work-sub{font-family:var(--font-ui);font-size:.68rem;color:var(--smoke);letter-spacing:.18em;margin-top:.2rem}
+  .badge{
+    display:inline-block;margin-top:.45rem;
+    font-family:var(--font-ui);font-size:.6rem;letter-spacing:.3em;
+    color:var(--gold);border:1px solid var(--gold-dim);
+    padding:.15rem .7rem .1rem .85rem;
+  }
+  .works-more{text-align:center;margin-top:3.5rem}
+
+  /* ───── ③ About ───── */
+  .about{background:var(--char)}
+  .about-inner{max-width:620px;margin:0 auto}
+  .about-lead{margin-bottom:4.5rem}
+  .about-lead p{margin-bottom:1.8em;font-size:.95rem;line-height:2.4}
+  .about-lead p:last-child{margin-bottom:0}
+  .about-lead .em{color:var(--gold)}
+  .about-divider{
+    text-align:center;margin:3.5rem 0;
+    font-size:.8rem;color:var(--gold-dim);letter-spacing:.5em;
+  }
+  .bio p{margin-bottom:1.8em;font-size:.95rem;line-height:2.4}
+  .bio p:last-child{margin-bottom:0}
+
+  /* ───── ④ Listen / Links ───── */
+  .links-grid{
+    max-width:560px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+  }
+  .link-btn{
+    display:flex;justify-content:center;align-items:center;
+    padding:1.05rem .5rem;
+    font-family:var(--font-ui);font-size:.8rem;letter-spacing:.25em;
+    color:var(--ivory);
+    border:1px solid rgba(200,168,120,.4);
+    transition:all .3s ease;text-align:center;
+  }
+  .link-btn:hover,.link-btn:focus-visible{
+    border-color:var(--gold);color:var(--gold);
+    background:rgba(200,168,120,.05);
+  }
+  .link-note{
+    text-align:center;margin-top:2.2rem;
+    font-family:var(--font-ui);font-size:.7rem;color:var(--smoke);letter-spacing:.15em;
+  }
+
+  /* ───── フッター ───── */
+  footer{
+    padding:4rem 1.5rem 3rem;text-align:center;
+    border-top:1px solid rgba(200,168,120,.15);
+  }
+  .footer-koku{font-family:var(--font-lat);font-size:1.05rem;letter-spacing:.4em;text-indent:.4em;color:var(--gold-dim);margin-bottom:1.4rem}
+  .footer-mail{
+    display:inline-flex;flex-direction:column;align-items:center;gap:.7rem;
+    color:var(--smoke);transition:color .3s;
+  }
+  .footer-mail svg{
+    width:2.9rem;height:2.9rem;padding:.75rem;
+    border:1px solid var(--gold-dim);border-radius:50%;
+    box-sizing:border-box;
+    transition:border-color .3s,box-shadow .3s;
+  }
+  .footer-mail:hover,.footer-mail:focus-visible{color:var(--gold)}
+  .footer-mail:hover svg,.footer-mail:focus-visible svg{
+    border-color:var(--gold);
+    box-shadow:0 0 18px rgba(200,168,120,.25);
+  }
+  .footer-mail-label{
+    font-family:var(--font-lat);font-size:.72rem;letter-spacing:.45em;text-indent:.45em;
+    text-transform:uppercase;
+  }
+  .copy{
+    margin-top:2rem;
+    font-family:var(--font-lat);font-size:.72rem;letter-spacing:.25em;color:#5c554a;
+  }
+
+  /* ───── レスポンシブ/モーション ───── */
+  @media (max-width:560px){
+    .nav-links{gap:.9rem;font-size:.64rem}
+    section{padding:5rem 1.2rem}
+    .concept-body{letter-spacing:.2em;line-height:2.3}
+    .links-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="nav-name">TOKI<span style="font-family:var(--font-min)">-刻</span></a>
+  <div class="nav-links">
+    <a href="#concept">Concept</a>
+    <a href="#works">Works</a>
+    <a href="#about">About</a>
+    <a href="#listen">Listen</a>
+  </div>
+</nav>
+
+<!-- ═══════ ヒーロー ═══════ -->
+<header class="hero" id="top">
+  <img class="hero-icon" src="images/icon.jpg" alt="TOKI-刻">
+  <h1 class="hero-name">TOKI<span class="koku">-刻</span></h1>
+  <p class="hero-tag">私のすべては曲の中に</p>
+  <div class="hero-scroll">SCROLL</div>
+</header>
+
+<!-- ═══════ ① コンセプト ═══════ -->
+<section class="concept" id="concept">
+  <div class="sec-label">
+    <div class="en">Prologue</div>
+  </div>
+  <div class="concept-body">
+    <p>突如、現れた？</p>
+    <p>いや、TOKIはずっと活動をしていた。</p>
+    <p>市井に紛れ、幾多の経験を積み、<br>ほどよく醸成されたところで<br>言葉と音楽を携えて出てきた。</p>
+    <p>また潜るかもしれない。</p>
+    <p>声と音だけを残して。</p>
+    <p class="em">これはそれまでのTOKIを刻む、<br>人間のクロニクル。</p>
+  </div>
+</section>
+
+<!-- ═══════ ② 作品一覧 ═══════ -->
+<section id="works">
+  <div class="sec-label">
+    <div class="en">Discography</div>
+  </div>
+
+  <div class="works-grid">
+<!-- SONG_CARDS -->
+  </div>
+
+  <div class="works-more">
+    <a class="link-btn" style="display:inline-flex;padding:1rem 2.4rem" href="https://www.tunecore.co.jp/artists?id=1107273" target="_blank" rel="noopener">全作品を見る（TuneCore）</a>
+  </div>
+</section>
+
+<!-- ═══════ ③ About ═══════ -->
+<section class="about" id="about">
+  <div class="sec-label">
+    <div class="en">About</div>
+  </div>
+
+  <div class="about-inner">
+    <div class="about-lead">
+      <p>TOKI-刻の曲には、一度では気付かない言葉がある。</p>
+      <p>韻。比喩。言葉遊び。<br>何気なく聴き流した一節が、別の日に違う意味を持って聴こえることがある。</p>
+      <p>答えを書くのではなく、聴く人それぞれが自分の答えを見つけられるように。</p>
+      <p>だから、一曲では終わらない。</p>
+      <p>聴けば聴くほど、歌詞の輪郭がはっきりし、その奥にいる一人の人間が少しずつ見えてくる。</p>
+      <p class="em">TOKI-刻を知る方法は、プロフィールではなく、音楽そのものにある。</p>
+    </div>
+
+    <div class="about-divider" style="font-family:var(--font-lat);letter-spacing:.55em;text-indent:.55em;font-size:.9rem;color:var(--gold)">BIOGRAPHY</div>
+
+    <div class="bio">
+      <p>若い頃、音楽を志し、歌唱とDTMを学んだ。同じ頃、マイケル・ジャクソンのダンスに衝撃を受け、夢中で踊り続けた。その時間は、今も楽曲のリズムやグルーヴとして息づいている。</p>
+      <p>ただ言葉を並べるだけでは満足できない。韻を踏み、言葉を遊び、頭の中で響く音と言葉が気持ちよく重なる瞬間を探し続けている。</p>
+      <p>夢だけを追い続けられた人生ではなかった。大切な人との別れ。言えなかった言葉。取り戻せない後悔。</p>
+      <p>音楽から離れた時期もあり、病気によって仕事を失ったこともあった。それでも、今、また新たに音楽に向き合おうと決めた。誰かが聴いてくれるなら、それが私の生きた証だと。</p>
+      <p>ロック、ポップス、バラード、ラップ……ジャンルは決まっていないが、私のすべては曲の中にある。もしも私の曲が誰かの今日を少しだけ前へ進める力になれたなら嬉しい。</p>
+      <p>「もう少し頑張ってみようかな」と思える、その小さなきっかけを届けたい。その想いを胸に、今日も新しい一曲を書いている。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ④ Listen / Links ═══════ -->
+<section id="listen">
+  <div class="sec-label">
+    <div class="en">Listen &amp; Follow</div>
+  </div>
+
+  <div class="links-grid">
+    <!-- リンクはTuneCoreのアーティストページに掲載のものを反映済み。要確認・差し替え自由 -->
+    <a class="link-btn" href="https://music.apple.com/jp/artist/1896391907" target="_blank" rel="noopener">Apple Music</a>
+    <a class="link-btn" href="https://open.spotify.com/artist/0VITs6DCaH8GcFETS26ncL" target="_blank" rel="noopener">Spotify</a>
+    <a class="link-btn" href="https://www.youtube.com/channel/UCDP7xO8H-wU6jidS0QaYzcA" target="_blank" rel="noopener">YouTube</a>
+    <a class="link-btn" href="https://x.com/TOKI_BnW" target="_blank" rel="noopener">X (Twitter)</a>
+    <a class="link-btn" href="https://music.line.me/webapp/artist/mi000000001daed877" target="_blank" rel="noopener">LINE MUSIC</a>
+    <a class="link-btn" href="#">TikTok（準備中）</a>
+  </div>
+  <p class="link-note">※ 各サービスで「TOKI 刻」と検索しても見つかります</p>
+</section>
+
+<!-- ═══════ フッター ═══════ -->
+<footer>
+  <div class="footer-koku">TOKI<span style="font-family:var(--font-min)">-刻</span></div>
+  <a class="footer-mail" id="contact-link" href="#" aria-label="メールで連絡する">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="2.5" y="5" width="19" height="14" rx="1"/>
+      <path d="M3 6l9 7 9-7"/>
+    </svg>
+    <span class="footer-mail-label">Contact</span>
+  </a>
+  <div class="copy">&copy; 2026 TOKI-刻 All Rights Reserved.</div>
+</footer>
+
+<script>
+  (function(){
+    var u = ['toki','musicstudio01'].join('.');
+    var d = ['gmail','com'].join('.');
+    var a = document.getElementById('contact-link');
+    a.setAttribute('href', 'mailto:' + u + '@' + d);
+  })();
+</script>
+</body>
+</html>
