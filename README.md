@@ -58,11 +58,20 @@ songs.json の書き方にミスがあると、何行目が怪しいか日本語
 
 ### 4. 公開する
 
-できあがった `index.html` と `images/` フォルダを公開先にアップロードします。
+サイトは GitHub Pages で公開しています（ https://toki-music-studio.github.io/ ）。
+次の3行を実行すると、そのまま公開に反映されます（1分ほどで切り替わります）。
+
+```
+git add -A
+git commit -m "新曲を追加"
+git push
+```
+
+これは**世界に公開する操作**です。中身を確認してから実行してください。
 
 ## Claude Code に頼む場合（おすすめ）
 
-手順1〜3は、Claude Code に日本語で頼むだけでもできます。例:
+手順1〜4は、Claude Code に日本語で頼むだけでもできます。例:
 
 > 新曲『夜明けのカノン』を追加して。linkco.reはこれ→ https://linkco.re/xxxxxxxx?lang=ja 。ジャケは images/yoake-no-canon.jpg。LATESTを付け替えてビルドまでやって
 
