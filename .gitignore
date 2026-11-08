@@ -1,1 +1,14 @@
 .DS_Store
+
+# Claude Code の個人設定・会話記録・合言葉のファイルは記録しない（2026-11-08 追加）
+.claude/settings.local.json
+.claude/*.local.json
+.claude/projects/
+.claude/shell-snapshots/
+.claude/todos/
+*.jsonl
+.env
+.env.*
+!.env.example
+*.pem
+*.key
